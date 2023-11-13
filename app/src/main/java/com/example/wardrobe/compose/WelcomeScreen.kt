@@ -29,7 +29,7 @@ fun WelcomeBody() {
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
             val (imageBackground, imageBackgroundTitle, imageBackgroundTips) = createRefs()
             Image(
-                painter = painterResource(R.drawable.gua_icon),
+                painter = painterResource(R.drawable.welcome_icon),
                 contentDescription = null,
                 modifier = Modifier
                     .constrainAs(imageBackground) {
