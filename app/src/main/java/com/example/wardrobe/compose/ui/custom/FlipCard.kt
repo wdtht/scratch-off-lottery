@@ -31,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.CornerRadius
@@ -78,16 +79,12 @@ fun FlipCard() {
         targetValue = if (rotated) 1f else 0f,
         animationSpec = tween(500), label = ""
     )
-    val cardMask = ImageBitmap.imageResource(id = R.drawable.book)
-    val cardBackground = ImageBitmap.imageResource(id = R.drawable.card_back)
-    val customPainter = remember {
-        LinePainter(cardBackground, cardMask)
-    }
     Card(
         modifier = Modifier
             .height(400.dp)
             .width(270.dp)
             .padding(10.dp)
+            .blur(4.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 8 * density
@@ -104,7 +101,7 @@ fun FlipCard() {
 
             Box(Modifier.fillMaxSize()){
                 Image(
-                    painter = customPainter,
+                    painter = painterResource(R.drawable.card_back),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxSize()

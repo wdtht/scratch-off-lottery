@@ -12,7 +12,13 @@ import kotlin.math.roundToInt
 
 /**
  * 作用：线性的画笔
- *
+ *用法：
+ * val cardMask = ImageBitmap.imageResource(id = R.drawable.book)
+ *     val cardBackground = ImageBitmap.imageResource(id = R.drawable.card_back)
+ *     val customPainter = remember {
+ *         LinePainter(cardBackground, cardMask)
+ *     }
+ *     painter =customPainter
  * @author chenkexi
  * @date :2023/11/10
  */

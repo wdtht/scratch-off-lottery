@@ -91,7 +91,7 @@ fun ViewButton(
             .drawWithCache {
                 val brush = Brush.linearGradient(
                     listOf(
-                        Color(0xFF9E82F0), Color(0xFF42A5F5)
+                        Color(0xFFEE7463), Color(0xFFB81A3A)
                     )
                 )
                 onDrawBehind {
