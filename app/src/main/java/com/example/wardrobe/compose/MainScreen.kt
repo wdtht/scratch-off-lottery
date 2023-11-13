@@ -3,11 +3,14 @@ package com.example.wardrobe.compose
 import android.graphics.Path
 import android.view.MotionEvent
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -15,16 +18,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.wardrobe.R
+import com.example.wardrobe.compose.ui.custom.LuckyCard
+
 /**
  * 作用：
  *
@@ -43,11 +53,14 @@ fun MainScreen(
     onBackClick: () -> Unit
 ) {
     Surface {
-        MyApp()
-        //FlipCard()
-        Button(onClick = onBackClick) {
-            Text(text = "button")
-
+        ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+            val (luckyCard) = createRefs()
+            LuckyCard(
+                modifier = Modifier
+                    .constrainAs(luckyCard) {
+                        centerTo(parent)
+                    }
+            )
         }
     }
 
@@ -123,6 +136,7 @@ fun ScratchOffCanvas(modifier: Modifier = Modifier, onScratch: (Offset) -> Unit)
                     onScratch(Offset(event.x, event.y))
                     true
                 }
+
                 else -> false
             }
         }) {

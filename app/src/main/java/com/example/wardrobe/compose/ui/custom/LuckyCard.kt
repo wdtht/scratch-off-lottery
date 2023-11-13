@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
@@ -36,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wardrobe.R
+import com.example.wardrobe.compose.ui.theme.ScreenBackground
 import com.example.wardrobe.compose.ui.theme.WardrobeTheme
 
 /**
@@ -47,7 +49,7 @@ import com.example.wardrobe.compose.ui.theme.WardrobeTheme
 
 @SuppressLint("ResourceType")
 @Composable
-fun LuckyCard() {
+fun LuckyCard(modifier: Modifier = Modifier) {
     var rotated by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
         targetValue = if (rotated) 180f else 0f,
@@ -62,7 +64,7 @@ fun LuckyCard() {
         animationSpec = tween(500), label = ""
     )
     Card(
-        modifier = Modifier
+        modifier = modifier
             .height(600.dp)
             .fillMaxWidth()
             .padding(20.dp)
@@ -88,6 +90,15 @@ fun LuckyCard() {
                         .fillMaxSize()
                         .clip(RoundedCornerShape(14.dp)),
                     contentScale = ContentScale.FillBounds
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(28.dp, 35.dp, 28.dp, 0.dp)
+                        .height(400.dp)
+                        .align(Alignment.Center)
+                        .background(ScreenBackground)
                 )
 
             }
