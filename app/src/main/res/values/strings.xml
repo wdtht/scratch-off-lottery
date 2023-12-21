@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">刮刮乐</string>
+    <string name="a11y_bottom_navigation_bar">Bottom navigation bar with Having actions </string>
+    <string name="navigation_item_home">Home</string>
 </resources>

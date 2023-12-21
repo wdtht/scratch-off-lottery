@@ -1,4 +1,4 @@
-package com.example.wardrobe.activity
+package com.example.wardrobe.ui.welcome
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,8 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.wardrobe.compose.WelcomeBody
-import com.example.wardrobe.compose.ui.theme.WardrobeTheme
+import com.example.wardrobe.ui.home.MainActivity
+import com.example.wardrobe.ui.welcome.component.WelcomeBody
+import com.example.wardrobe.theme.WardrobeTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

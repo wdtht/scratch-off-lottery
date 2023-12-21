@@ -1,4 +1,4 @@
-package com.example.wardrobe.compose.painter
+package com.example.wardrobe.custom.painter
 
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode

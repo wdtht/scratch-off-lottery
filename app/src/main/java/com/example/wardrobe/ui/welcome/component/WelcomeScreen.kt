@@ -1,4 +1,4 @@
-package com.example.wardrobe.compose
+package com.example.wardrobe.ui.welcome.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.wardrobe.R
-import com.example.wardrobe.compose.ui.theme.Grey200
+import com.example.wardrobe.theme.Grey200
 
 @Composable
 fun WelcomeBody() {

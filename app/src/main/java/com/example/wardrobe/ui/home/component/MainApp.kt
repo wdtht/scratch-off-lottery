@@ -1,4 +1,4 @@
-package com.example.wardrobe.compose.ui
+package com.example.wardrobe.ui.home.component
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.wardrobe.compose.MainScreen
 
 /**
  * 作用：跳转
@@ -30,9 +29,7 @@ fun RecipesNavHost(
     val activity = (LocalContext.current as Activity)
     NavHost(navController = navController, startDestination = "main/mainView") {
         composable("main/mainView") {
-            MainScreen(
-                onBackClick = { navController.navigateUp() }
-            )
+            MainScreen()
         }
     }
 }

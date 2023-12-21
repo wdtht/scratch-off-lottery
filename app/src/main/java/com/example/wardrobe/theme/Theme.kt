@@ -1,4 +1,4 @@
-package com.example.wardrobe.compose.ui.theme
+package com.example.wardrobe.theme
 
 import android.app.Activity
 import android.os.Build
