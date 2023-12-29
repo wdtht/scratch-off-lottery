@@ -1,6 +1,8 @@
 package com.example.wardrobe.ui.home.component
 
+import android.content.res.Configuration
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +20,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -33,23 +37,40 @@ import com.example.wardrobe.R
  */
 
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen() {
     val homeScreenState = rememberSaveable { mutableStateOf(BottomNavType.HOME) }
     val bottomNavBarContentDescription = stringResource(id = R.string.a11y_bottom_navigation_bar)
 
-    val coroutineScope = rememberCoroutineScope()
-    Row(modifier = Modifier.fillMaxSize()) {
-        NavigationTab(
-            modifier = Modifier
-                .semantics { contentDescription = bottomNavBarContentDescription },
-            homeScreenState = homeScreenState
-        )
-        HomeScreenContent(
-            homeScreen = homeScreenState.value,
-            modifier = Modifier.weight(1f)
-        )
+    val config = LocalConfiguration.current
+    val orientation = config.orientation
+    //判断是横屏还是竖屏
+    if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        //竖屏
+        Column(modifier = Modifier.fillMaxSize()) {
+            HomeScreenContent(
+                homeScreen = homeScreenState.value,
+                modifier = Modifier.weight(1f)
+            )
+            BottomNavigationTab(
+                modifier = Modifier
+                    .semantics { contentDescription = bottomNavBarContentDescription },
+                homeScreenState = homeScreenState
+            )
+        }
+    } else {
+        //横屏
+        Row(modifier = Modifier.fillMaxSize()) {
+            NavigationRailTab(
+                modifier = Modifier
+                    .semantics { contentDescription = bottomNavBarContentDescription },
+                homeScreenState = homeScreenState
+            )
+            HomeScreenContent(
+                homeScreen = homeScreenState.value,
+                modifier = Modifier.weight(1f)
+            )
+        }
     }
 
 }
@@ -76,16 +97,16 @@ fun HomeScreenContent(
 }
 
 @Composable
-fun HomeScreen(){
-    Column(){
+fun HomeScreen() {
+    Column(modifier = Modifier.fillMaxSize().background(Color.Gray)) {
         Text(text = "aaaaaaaaaa")
     }
 
 }
 
 @Composable
-fun HomeScreenB(){
-    Column(){
+fun HomeScreenB() {
+    Column() {
         Text(text = "bbbbbbbbbb")
     }
 

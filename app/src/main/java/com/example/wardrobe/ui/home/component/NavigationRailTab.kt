@@ -23,13 +23,13 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 
 /**
- * 作用：底部tab菜单
+ * 作用：tab菜单:靠左边的菜单
  *
  * @author chenkexi
  * @date :2023/12/20
  */
 @Composable
-fun NavigationTab(
+fun NavigationRailTab(
     modifier: Modifier,
     homeScreenState: MutableState<BottomNavType>,
 ) {
